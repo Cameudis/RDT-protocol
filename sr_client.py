@@ -1,9 +1,9 @@
-from gbn import GBNSocket
+from sr import SRSocket
 
 HOST = 'localhost'
 PORT = 8000
 
-s = GBNSocket()
+s = SRSocket()
 s.connect((HOST, PORT))
 print('Connect to', s.address)
 
@@ -12,4 +12,6 @@ data = f.read()
 f.close()
 
 s.send(data)
+s.send(b"ENDDDDD")
+print(s.recv().decode())
 s.close()
